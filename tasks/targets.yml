@@ -1,0 +1,10 @@
+---
+- name: Configure iSCSI Targets
+  win_iscsi_target:
+    target_iqn: "{{ item.target_iqn }}"
+    target_ip: "{{ item.target_ip }}"
+    target_port: "{{ item.target_port if item.target_port is defined else 3260}}"
+    source_ip: "{{ item.source_ip }}"
+    multipath: "{{ item.multipath }}"
+    state: present
+  with_items: "{{ iscsi_targets }}"

@@ -1,0 +1,8 @@
+---
+- include: tasks/mpio.yml
+  when: enable_mpio == True
+- include: tasks/service.yml
+- include: tasks/portals.yml
+  when: iscsi_portals is defined
+- include: tasks/targets.yml
+  when: iscsi_targets is defined

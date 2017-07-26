@@ -1,0 +1,11 @@
+---
+- name: Install Multipath IO Feature
+  win_feature:
+    name: Multipath-IO
+    state: present
+- name: Enable Multipath Hardware
+  win_mpio_hw:
+    vendor_id: "{{ item.vendor_id }}"
+    product_id: "{{ item.product_id }}"
+    state: present
+  with_items: "{{ mpio_hardware }}"

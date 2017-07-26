@@ -1,0 +1,6 @@
+---
+- name: Enable iSCSI Service
+  win_service:
+    name: MSiSCSI
+    start_mode: auto
+    state: started

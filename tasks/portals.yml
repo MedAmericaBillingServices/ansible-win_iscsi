@@ -1,0 +1,8 @@
+---
+- name: Configure iSCSI Target Portal
+  win_iscsi_portal:
+    target_ip: "{{ item.target_ip }}"
+    target_port: "{{ item.target_port if item.target_port is defined else 3260 }}"
+    source_ip: "{{ item.source_ip }}"
+    state: present
+  with_items: "{{ iscsi_portals }}"
